@@ -1,11 +1,15 @@
 package com.example.okarepro;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,29 +17,45 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
     private List<Msg> msgList = new ArrayList<>();
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
-    private ImageButton send;
+    private ImageButton send,clicka;
     private MyAdapter adapter;
+    private AlertDialog alert;
+    private Timer timerl;
+    FirebaseDatabase rootNode;
+    DatabaseReference reference,r1;
+    SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+
     //測試用資料集
     private LinkedList<HashMap<String,String>> data;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        initMsgs();
-
         recyclerView=findViewById(R.id.recycLerview);
         recyclerView.setHasFixedSize(true);
         // recycleview 裡面都要設定控管排版的LayoutManager
@@ -44,7 +64,44 @@ public class MainActivity extends AppCompatActivity {
         //將自訂義好的Adapter 接上recycleView 的Adapter
         adapter=new MyAdapter(msgList);
         recyclerView.setAdapter(adapter);
-        send = (ImageButton)findViewById(R.id.main_btn_7);
+        clicka=(ImageButton)findViewById(R.id.main_btn_7);
+        clicka.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view) {
+                Toast toast = Toast.makeText(MainActivity.this, "若要使用SOS請長按「SOS」方格", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER,0,0);
+
+                toast.show();
+            }
+            }
+        );
+//長按SOS觸發對話框
+        clicka.setOnLongClickListener(new View.OnLongClickListener(){
+            public boolean onLongClick(View view){
+                rootNode=FirebaseDatabase.getInstance();
+                reference=rootNode.getReference("WARNING_MESSAGE/older_side/sos");
+                reference.setValue(true);
+                r1=rootNode.getReference("WARNING_MESSAGE/older_side/datetime");
+                Date date = new Date(System.currentTimeMillis());
+                r1.setValue(formatter.format(date));
+                AlertDialog.Builder alertDialog =
+                        new AlertDialog.Builder(MainActivity.this);
+                alertDialog.setMessage("SOS警示系統已開啟");
+                alertDialog.setPositiveButton("關閉", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getBaseContext(),"關閉",Toast.LENGTH_SHORT).show();
+                        Date date = new Date(System.currentTimeMillis());
+                        reference.setValue(false);
+                        r1.setValue(formatter.format(date));
+                    }
+                });
+                alertDialog.setCancelable(false);
+                alertDialog.show();
+                return true;
+            }
+        });
+
+        send = (ImageButton)findViewById(R.id.main_btn_10);
         send.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
                 String content="hello duncan";
@@ -54,16 +111,19 @@ public class MainActivity extends AppCompatActivity {
                     msgList.add(msg);
                     msgList.add(msg1);
                     adapter.notifyItemInserted(msgList.size()-1);//當有訊息時，重新整理ListView中的顯示
-                   //adapter.notifyDataSetChanged();
-
                     recyclerView.scrollToPosition(msgList.size()-1);//將ListView定位到最後一行
+                    }
                 }
             }
-        });
+        );
 
     }
 
 
+
+
+
+    //做Adapter 的部分
     public class Msg {
         public static final int TYPE_RECEIVED = 0;
         public static final int TYPE_SENT = 1;
@@ -80,39 +140,35 @@ public class MainActivity extends AppCompatActivity {
             return type;
         }
     }
-
     //自訂義myadapter
     private class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
         private List<Msg> mMsgList;
         //屬性中間的間接
         class MyViewHolder extends RecyclerView.ViewHolder{
-           // public View mTextView;
+            // public View mTextView;
             //public TextView title,date;
-
-        LinearLayout leftlayout;
-        LinearLayout rightlayout;
-        TextView leftMsg;
-        TextView rightMsg;
-
-        public MyViewHolder(View v){
-            //mTextView=v;
-            super(v);
-            leftlayout=v.findViewById(R.id.left_layout);
-            rightlayout=v.findViewById(R.id.right_layout);
-            leftMsg=v.findViewById(R.id.left_msg);
-            rightMsg=v.findViewById(R.id.right_msg);
-        }
+            LinearLayout leftlayout;
+            LinearLayout rightlayout;
+            TextView leftMsg;
+            TextView rightMsg;
+            TextView nameTxt, messageTxt,msgtext;
+            public MyViewHolder(View v){
+                //mTextView=v;
+                super(v);
+                leftlayout=v.findViewById(R.id.left_layout);
+                rightlayout=v.findViewById(R.id.right_layout);
+                leftMsg=v.findViewById(R.id.receivedTxt);
+                rightMsg=v.findViewById(R.id.sentTxt);
             }
+        }
         public MyAdapter(List<Msg> msgList){
             mMsgList = msgList;
         }
-
         @NonNull
         @Override
-
         //產生holder 和view 對接的介面
         public MyAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-           //把view take 出來後跟viewholder 對接
+            //把view take 出來後跟viewholder 對接
             View itemview= LayoutInflater.from(parent.getContext()).inflate(R.layout.item,parent,false);
             MyViewHolder aa=new MyViewHolder(itemview);
             return aa;
@@ -121,8 +177,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         //處理資料處理的細節
         public void onBindViewHolder(@NonNull MyAdapter.MyViewHolder  holder, int position) {
-        //holder.title.setText(data.get(position).get("title"));
-        //holder.date.setText(data.get(position).get("date"));
+            //holder.title.setText(data.get(position).get("title"));
+            //holder.date.setText(data.get(position).get("date"));
             Msg msg = mMsgList.get(position);
             if(msg.getType() == Msg.TYPE_RECEIVED){
 //如果是收到的訊息，則顯示左邊的訊息佈局，將右邊的訊息佈局隱藏
@@ -136,21 +192,13 @@ public class MainActivity extends AppCompatActivity {
                 holder.rightMsg.setText(msg.getContent());
             }
         }
-
         @Override
         //總共有幾筆資料
         public int getItemCount() {
             return mMsgList.size();
         }
     }
-    private void initMsgs(){
-        Msg msg1 = new Msg("Hello guy.", Msg.TYPE_RECEIVED);
-        msgList.add(msg1);
-        Msg msg2 = new Msg("Hello. Who is that?", Msg.TYPE_SENT);
-        msgList.add(msg2);
-        Msg msg3 = new Msg("This is Tom, Nice talking to you. ", Msg.TYPE_RECEIVED);
-        msgList.add(msg3);
-    }
+
 
 
     public void healthymethod(View view) {
