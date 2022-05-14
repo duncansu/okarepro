@@ -75,7 +75,6 @@
                 android:layout_weight="1"
                 android:background="@drawable/healthybutton"
                 android:layout_margin="2dp"
-                android:onClick="healthymethod"
                 />
         </LinearLayout>
             <LinearLayout
@@ -105,5 +104,6 @@
                     />
             </LinearLayout>
         </LinearLayout>
-</LinearLayout>
+
+    </LinearLayout>
 </LinearLayout>

@@ -1,61 +1,34 @@
-<!--<?xml version="1.0" encoding="utf-8"?>-->
-<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--xmlns:tools="http://schemas.android.com/tools"-->
-<!--android:layout_width="match_parent"-->
-<!--android:layout_height="wrap_content"-->
-<!--tools:context=".MainActivity">-->
-
-<!--<TextView-->
-<!--    android:id="@+id/nameTxt"-->
-<!--    android:layout_width="wrap_content"-->
-<!--    android:layout_height="wrap_content"-->
-<!--    android:layout_margin="4dp"-->
-<!--    android:text="Name"-->
-<!--    android:textStyle="bold" />-->
-
-<!--<TextView-->
-<!--    android:layout_width="wrap_content"-->
-<!--    android:layout_height="wrap_content"-->
-<!--    android:layout_below="@+id/nameTxt"-->
-<!--    android:padding="8dp"-->
-<!--    android:textColor="#ffffff"-->
-<!--    android:layout_marginEnd="64dp"-->
-<!--    android:layout_marginBottom="4dp"-->
-<!--    android:textSize="16sp"-->
-<!--    android:id="@+id/receivedTxt"-->
-<!--    android:text="Hello my name is yancehn"/>-->
-
-<!--</RelativeLayout>-->
 
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     >
 
-    <LinearLayout
-        android:id="@+id/left_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/left_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/design_default_color_primary"
-            android:padding="8dp"
-            android:textColor="#ffffff"
-            android:layout_marginEnd="64dp"
-            android:layout_marginBottom="4dp"
-            android:textSize="16sp"
-            android:id="@+id/receivedTxt"
-            android:text="Hello my name is yancehn"/>
-    </LinearLayout>
+            <TextView
+                android:id="@+id/receivedTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="64dp"
+                android:layout_marginBottom="4dp"
+                android:background="@color/design_default_color_primary"
+                android:padding="8dp"
+                android:text="Hello my name is yancehn"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+        </LinearLayout>
 
-    <LinearLayout
+        <LinearLayout
         android:id="@+id/right_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -74,4 +47,16 @@
             android:text="Hello"
             android:textSize="16sp" />
     </LinearLayout>
-</LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/healthymessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:orientation="horizontal">
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>

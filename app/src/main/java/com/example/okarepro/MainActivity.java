@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity  {
     private List<Msg> msgList = new ArrayList<>();
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
-    private ImageButton send,clicka;
+    private ImageButton cloud,help,healthybutton;
     private MyAdapter adapter;
     private AlertDialog alert;
     private Timer timerl;
@@ -46,16 +46,13 @@ public class MainActivity extends AppCompatActivity  {
 
     //測試用資料集
     private LinkedList<HashMap<String,String>> data;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //初始化聊天室
+        msgList.add(new Msg("請問有甚麼需要幫忙的嗎?",Msg.TYPE_RECEIVED));
+
         recyclerView=findViewById(R.id.recycLerview);
         recyclerView.setHasFixedSize(true);
         // recycleview 裡面都要設定控管排版的LayoutManager
@@ -64,8 +61,8 @@ public class MainActivity extends AppCompatActivity  {
         //將自訂義好的Adapter 接上recycleView 的Adapter
         adapter=new MyAdapter(msgList);
         recyclerView.setAdapter(adapter);
-        clicka=(ImageButton)findViewById(R.id.main_btn_7);
-        clicka.setOnClickListener(new View.OnClickListener(){
+        help=(ImageButton)findViewById(R.id.main_btn_7);
+        help.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
                 Toast toast = Toast.makeText(MainActivity.this, "若要使用SOS請長按「SOS」方格", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER,0,0);
@@ -75,7 +72,7 @@ public class MainActivity extends AppCompatActivity  {
             }
         );
 //長按SOS觸發對話框
-        clicka.setOnLongClickListener(new View.OnLongClickListener(){
+       help.setOnLongClickListener(new View.OnLongClickListener(){
             public boolean onLongClick(View view){
                 rootNode=FirebaseDatabase.getInstance();
                 reference=rootNode.getReference("WARNING_MESSAGE/older_side/sos");
@@ -100,9 +97,8 @@ public class MainActivity extends AppCompatActivity  {
                 return true;
             }
         });
-
-        send = (ImageButton)findViewById(R.id.main_btn_10);
-        send.setOnClickListener(new View.OnClickListener(){
+        cloud = (ImageButton)findViewById(R.id.main_btn_10);
+        cloud.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
                 String content="hello duncan";
                 if(!"".equals(content)){
@@ -116,6 +112,18 @@ public class MainActivity extends AppCompatActivity  {
                 }
             }
         );
+        healthybutton=(ImageButton)findViewById(R.id.main_btn_8);
+        healthybutton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, healthractivity.class);
+                startActivity(intent);
+
+            }
+        }
+        );
+
+
 
     }
 
@@ -197,11 +205,6 @@ public class MainActivity extends AppCompatActivity  {
         public int getItemCount() {
             return mMsgList.size();
         }
-    }
-
-
-
-    public void healthymethod(View view) {
     }
 
     public void medicinemethod(View view) {
