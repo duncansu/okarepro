@@ -4,11 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/dunca/AndroidStudioProjects/okarepro/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1875" />
+        <entry key="..\:/Users/dunca/AndroidStudioProjects/okarepro/app/src/main/res/layout/activity_cloud.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/dunca/AndroidStudioProjects/okarepro/app/src/main/res/layout/activity_main.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/dunca/AndroidStudioProjects/okarepro/app/src/main/res/layout/healthy_bind.xml" value="0.17798913043478262" />
         <entry key="..\:/Users/dunca/AndroidStudioProjects/okarepro/app/src/main/res/layout/item.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/dunca/AndroidStudioProjects/okarepro/app/src/main/res/layout/item_received_message.xml" value="0.14673913043478262" />
         <entry key="..\:/Users/dunca/AndroidStudioProjects/okarepro/app/src/main/res/layout/item_send_message.xml" value="0.14673913043478262" />
+        <entry key="..\:/Users/dunca/AndroidStudioProjects/okarepro/app/src/main/res/xml/network_security_config.xml" value="0.1" />
       </map>
     </option>
   </component>
