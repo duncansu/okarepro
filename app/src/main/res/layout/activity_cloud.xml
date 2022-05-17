@@ -20,158 +20,153 @@
             android:layout_alignParentTop="true"
             android:layout_marginTop="1dp"
             android:src="@drawable/cloudbar" />
+
         <ImageButton
             android:layout_width="40dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:background="@drawable/oldersetting"
-            />
+            android:background="@drawable/oldersetting" />
     </RelativeLayout>
 
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15"
+        android:paddingHorizontal="30dp"
+        >
+
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="120dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:orientation="vertical"
+            android:background="@drawable/clouddatabackground">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="步數"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_marginVertical="5dp"
+                android:layout_marginHorizontal="10dp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="血氧"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_marginVertical="5dp"
+                android:layout_marginHorizontal="10dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="120dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:orientation="vertical"
+            android:background="@drawable/clouddatabackground">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="步數"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_marginVertical="5dp"
+                android:layout_marginHorizontal="10dp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="血氧"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_marginVertical="5dp"
+                android:layout_marginHorizontal="10dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="120dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:orientation="vertical"
+            android:background="@drawable/clouddatabackground">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="步數"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_marginVertical="5dp"
+                android:layout_marginHorizontal="10dp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="血氧"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_marginVertical="5dp"
+                android:layout_marginHorizontal="10dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="120dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:orientation="vertical"
+            android:background="@drawable/clouddatabackground">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="步數"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_marginVertical="5dp"
+                android:layout_marginHorizontal="10dp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="血氧"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_marginVertical="5dp"
+                android:layout_marginHorizontal="10dp"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="84"
+        android:layout_weight="1"
         android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="10"
-            android:orientation="horizontal"
-            android:paddingVertical="16dp">
-
-            <View
-                android:layout_width="2dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:background="#cccccc"
-                />
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_gravity="bottom"
-                >
-
-                <TextView
-                    android:id="@+id/testmsg"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:gravity="center"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="環境溫度"
-                    android:textSize="24sp"
-                    android:layout_alignParentBottom="true"
-                    />
-            </RelativeLayout>
-
-            <View
-                android:layout_width="2dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:background="#cccccc"
-                />
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <TextView
-                    android:id="@+id/testhumid"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:gravity="center"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="環境濕度"
-                    android:textSize="24sp"
-                    android:layout_alignParentBottom="true"
-                    />
-            </RelativeLayout>
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="10"
-            android:orientation="horizontal"
-            android:paddingVertical="16dp">
-
-            <View
-                android:layout_width="2dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:background="#cccccc"
-                />
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="23.7℃"
-                    android:textStyle="bold"
-                    android:textSize="24sp"
-                    android:layout_alignParentTop="true"
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="戶外溫度"
-                    android:textSize="24sp"
-                    android:layout_alignParentBottom="true"
-                    />
-            </RelativeLayout>
-
-            <View
-                android:layout_width="2dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:background="#cccccc"
-                />
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="35%"
-                    android:textStyle="bold"
-                    android:textSize="24sp"
-                    android:layout_alignParentTop="true"
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="降雨機率"
-                    android:textSize="24sp"
-                    android:layout_alignParentBottom="true"
-                    />
-            </RelativeLayout>
-
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -230,5 +225,4 @@
                     />
             </LinearLayout>
         </LinearLayout>
-</LinearLayout>
 </LinearLayout>
