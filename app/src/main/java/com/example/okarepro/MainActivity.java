@@ -102,15 +102,7 @@ public class MainActivity extends AppCompatActivity  {
         cloud = (ImageButton)findViewById(R.id.main_btn_10);
         cloud.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
-//                String content="hello duncan";
-//                if(!"".equals(content)){
-//                    Msg msg = new Msg(content, Msg.TYPE_SENT);
-//                    Msg msg1=new Msg("沒問題",Msg.TYPE_RECEIVED);
-//                    msgList.add(msg);
-//                    msgList.add(msg1);
-//                    adapter.notifyItemInserted(msgList.size()-1);//當有訊息時，重新整理ListView中的顯示
-//                    recyclerView.scrollToPosition(msgList.size()-1);//將ListView定位到最後一行
-//                    }
+
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this,cloud.class);
                 startActivity(intent);

@@ -38,140 +38,135 @@
 
         <LinearLayout
             android:layout_width="150dp"
-            android:layout_height="120dp"
-            android:layout_alignParentTop="true"
+            android:layout_height="100dp"
             android:layout_alignParentLeft="true"
-            android:orientation="vertical"
-            android:background="@drawable/clouddatabackground">
+            android:layout_alignParentTop="true"
+            android:background="@drawable/clouddatabackground"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/testmsg"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
+                android:layout_weight="1"
+                android:gravity="center"
+
+                android:textColor="@color/black" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="步數"
-                android:textColor="@color/black"
-                android:gravity="center"
-                android:layout_marginVertical="5dp"
                 android:layout_marginHorizontal="10dp"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="血氧"
-                android:textColor="@color/black"
-                android:gravity="center"
                 android:layout_marginVertical="5dp"
-                android:layout_marginHorizontal="10dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="室內溫度"
+                android:textColor="@color/black" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="150dp"
-            android:layout_height="120dp"
+            android:layout_height="100dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
-            android:orientation="vertical"
-            android:background="@drawable/clouddatabackground">
+            android:background="@drawable/clouddatabackground"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/testhumid"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
+                android:layout_weight="1"
+                android:gravity="center"
+
+                android:textColor="@color/black" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="步數"
-                android:textColor="@color/black"
-                android:gravity="center"
-                android:layout_marginVertical="5dp"
                 android:layout_marginHorizontal="10dp"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="血氧"
-                android:textColor="@color/black"
-                android:gravity="center"
                 android:layout_marginVertical="5dp"
-                android:layout_marginHorizontal="10dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="室內溼度"
+                android:textColor="@color/black" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="150dp"
-            android:layout_height="120dp"
-            android:layout_alignParentBottom="true"
+            android:layout_height="100dp"
             android:layout_alignParentLeft="true"
-            android:orientation="vertical"
-            android:background="@drawable/clouddatabackground">
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/clouddatabackground"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="步數"
-                android:textColor="@color/black"
-                android:gravity="center"
-                android:layout_marginVertical="5dp"
+                android:id="@+id/text3"
                 android:layout_marginHorizontal="10dp"
-                />
+                android:layout_marginVertical="5dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/black" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="血氧"
-                android:textColor="@color/black"
-                android:gravity="center"
-                android:layout_marginVertical="5dp"
                 android:layout_marginHorizontal="10dp"
-                />
+                android:layout_marginVertical="5dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="室外溫度"
+                android:textColor="@color/black" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="150dp"
-            android:layout_height="120dp"
-            android:layout_alignParentBottom="true"
+            android:layout_height="100dp"
             android:layout_alignParentRight="true"
-            android:orientation="vertical"
-            android:background="@drawable/clouddatabackground">
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/clouddatabackground"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="步數"
-                android:textColor="@color/black"
-                android:gravity="center"
-                android:layout_marginVertical="5dp"
+                android:id="@+id/text4"
                 android:layout_marginHorizontal="10dp"
-                />
+                android:layout_marginVertical="5dp"
+                android:layout_weight="1"
+                android:gravity="center"
+
+                android:textColor="@color/black" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="血氧"
-                android:textColor="@color/black"
-                android:gravity="center"
-                android:layout_marginVertical="5dp"
                 android:layout_marginHorizontal="10dp"
-                />
+                android:layout_marginVertical="5dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="降雨機率"
+                android:textColor="@color/black" />
 
         </LinearLayout>
 
     </RelativeLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
-        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="25"
+            android:layout_marginTop="15dp"
             android:orientation="vertical">
 
             <LinearLayout
