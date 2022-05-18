@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -34,6 +37,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity  {
+
     private List<Msg> msgList = new ArrayList<>();
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -106,6 +110,7 @@ public class MainActivity extends AppCompatActivity  {
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this,cloud.class);
                 startActivity(intent);
+
                 }
             }
         );
@@ -203,6 +208,7 @@ public class MainActivity extends AppCompatActivity  {
             return mMsgList.size();
         }
     }
+
 
     public void medicinemethod(View view) {
     }
