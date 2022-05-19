@@ -103,6 +103,16 @@ public class MainActivity extends AppCompatActivity  {
                 return true;
             }
         });
+        healthybutton=(ImageButton)findViewById(R.id.main_btn_8);
+        healthybutton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view) {
+                Intent intent1 = new Intent();
+                intent1.setClass(MainActivity.this, healthractivity.class);
+                startActivity(intent1);
+
+            }
+        }
+        );
         cloud = (ImageButton)findViewById(R.id.main_btn_10);
         cloud.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
@@ -114,16 +124,7 @@ public class MainActivity extends AppCompatActivity  {
                 }
             }
         );
-        healthybutton=(ImageButton)findViewById(R.id.main_btn_8);
-        healthybutton.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setClass(MainActivity.this, healthractivity.class);
-                startActivity(intent);
 
-            }
-        }
-        );
 
 
 
