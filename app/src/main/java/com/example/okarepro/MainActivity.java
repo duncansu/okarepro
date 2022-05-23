@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity  {
     private List<Msg> msgList = new ArrayList<>();
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
-    private ImageButton cloud,help,healthybutton;
+    private ImageButton cloud,help,healthybutton,dial1,dial2,medicinestore;
     private MyAdapter adapter;
     private AlertDialog alert;
     private Timer timerl;
@@ -59,14 +60,14 @@ public class MainActivity extends AppCompatActivity  {
         //初始化聊天室
         msgList.add(new Msg("請問有甚麼需要幫忙的嗎?",Msg.TYPE_RECEIVED));
 
-        recyclerView=findViewById(R.id.recycLerview);
-        recyclerView.setHasFixedSize(true);
+
+
         // recycleview 裡面都要設定控管排版的LayoutManager
-        mLayoutManager=new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(mLayoutManager);
+        //mLayoutManager=new LinearLayoutManager(this);
+        //recyclerView.setLayoutManager(mLayoutManager);
         //將自訂義好的Adapter 接上recycleView 的Adapter
-        adapter=new MyAdapter(msgList);
-        recyclerView.setAdapter(adapter);
+        //adapter=new MyAdapter(msgList);
+        //recyclerView.setAdapter(adapter);
         help=(ImageButton)findViewById(R.id.main_btn_7);
         help.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
@@ -123,6 +124,62 @@ public class MainActivity extends AppCompatActivity  {
 
                 }
             }
+        );
+
+
+        medicinestore =(ImageButton)findViewById(R.id.main_btn_9);
+        medicinestore.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this,medicine_store.class);
+                startActivity(intent);
+
+            }
+        }
+        );
+
+
+
+
+        String phoneNumber="0937889479";
+        dial1=(ImageButton) findViewById(R.id.contact1);
+        dial1.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view) {
+
+                Intent phoneIntent = new Intent(Intent.ACTION_DIAL);
+                String aa="tel:"+"0937889479";
+                phoneIntent.setData(Uri.parse(aa));
+                try {
+                    startActivity(phoneIntent);
+                    finish();
+                    System.out.print("Finished making a call...");
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(MainActivity.this,
+                            "Call faild, please try again later.", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }
+        );
+        String phoneNumber1="0933854611";
+        dial2=(ImageButton) findViewById(R.id.contact2);
+        dial2.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view) {
+
+                Intent phoneIntent = new Intent(Intent.ACTION_DIAL);
+                String aa="tel:"+"0933854611";
+                phoneIntent.setData(Uri.parse(aa));
+                try {
+                    startActivity(phoneIntent);
+                    finish();
+                    System.out.print("Finished making a call...");
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(MainActivity.this,
+                            "Call faild, please try again later.", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }
         );
 
 

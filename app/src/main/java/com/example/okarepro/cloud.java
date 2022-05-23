@@ -27,7 +27,7 @@ import org.json.JSONObject;
 public class cloud extends AppCompatActivity {
     private ImageButton back;
     private RequestQueue queue;
-    private TextView test1,test2,test3,test4,check,check1;
+    private TextView test1,test2,test3,test4,check,check1,check2;
     private myReceiver myreceiver,m1;
 
     @Override
@@ -41,6 +41,7 @@ public class cloud extends AppCompatActivity {
         test4=(TextView)findViewById(R.id.text4);
         check=(TextView)findViewById(R.id.check);
         check1=(TextView)findViewById(R.id.check1);
+        check2=(TextView)findViewById(R.id.check2);
         queue= Volley.newRequestQueue(this);
 
         back=(ImageButton) findViewById(R.id.back);
@@ -86,9 +87,9 @@ public class cloud extends AppCompatActivity {
             test4.setText(result2+"%");
             test3.setText(result3+"度");
 
-            if (!TextUtils.isEmpty(result) && TextUtils.isDigitsOnly(result)) {
-                int aa=Integer.parseInt(result);
-                if(aa>25){
+            if (!TextUtils.isEmpty(result3) && TextUtils.isDigitsOnly(result3)) {
+                int aa=Integer.parseInt(result3);
+                if(aa>=25){
                     check.setText("1.今天可以穿少一點");
                 }
                 else if(aa<25&&aa>15){
@@ -99,6 +100,33 @@ public class cloud extends AppCompatActivity {
                 }
 
             }
+            if (!TextUtils.isEmpty(result2) && TextUtils.isDigitsOnly(result2)) {
+                int aa=Integer.parseInt(result2);
+                if(aa>=40){
+                    check1.setText("2.出門記得帶傘");
+                }
+                else if(aa<40&&aa>15){
+                    check1.setText("2.出門要帶傘");
+                }
+                else if(aa<15){
+                    check1.setText("2.出門可以不用帶傘");
+                }
+
+            }
+            if (!TextUtils.isEmpty(result1) && TextUtils.isDigitsOnly(result1)) {
+                int aa=Integer.parseInt(result1);
+                if(aa>50){
+                    check2.setText(
+                            "3.小心:\n" +
+                            "  #過敏\n" +
+                            "  #關節炎\n" +
+                            "  #呼吸系統疾病");
+                }
+                else{ check2.setText("空氣環境穩定");}
+
+            }
+
+
 
 
 
@@ -114,3 +142,4 @@ public class cloud extends AppCompatActivity {
 //中央氣象台url
 //https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-061?Authorization=CWB-48D21A76-4D45-4BBB-AFB5-E7DAEA8E9714&format=JSON
 //CWB-48D21A76-4D45-4BBB-AFB5-E7DAEA8E9714
+//https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-061?Authorization=CWB-1079762D-608A-4B35-B1B2-0D0208F80C47&format=JSON

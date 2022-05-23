@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">okare pro</string>
+    <string name="action_settings">Settings</string>
+    <string name="make_call">Call 0937889479</string>
 </resources>
