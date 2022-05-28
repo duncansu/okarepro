@@ -125,15 +125,6 @@ public class cloud extends AppCompatActivity {
                 else{ check2.setText("空氣環境穩定");}
 
             }
-
-
-
-
-
-
-
-
-
         }
     }
 
