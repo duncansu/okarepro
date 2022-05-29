@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Msg> msgList = new ArrayList<>();
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
-    private ImageButton cloud, help, healthybutton, dial1, dial2, medicinestore;
+    private ImageButton cloud, help, healthybutton, dial1, dial2, medicinestore,settingbutton;
     private MyAdapter adapter;
     private AlertDialog alert;
     private Timer timerl;
@@ -58,16 +58,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //初始化聊天室
-        msgList.add(new Msg("請問有甚麼需要幫忙的嗎?", Msg.TYPE_RECEIVED));
+        settingbutton=(ImageButton)findViewById(R.id.settingbutton);
+        settingbutton.setOnClickListener(new View.OnClickListener() {
+                                             public void onClick(View view) {
+                                                 Intent intent1 = new Intent();
+                                                 intent1.setClass(MainActivity.this, setting.class);
+                                                 startActivity(intent1);
+
+                                             }
+                                         }
+        );
 
 
-        // recycleview 裡面都要設定控管排版的LayoutManager
-        //mLayoutManager=new LinearLayoutManager(this);
-        //recyclerView.setLayoutManager(mLayoutManager);
-        //將自訂義好的Adapter 接上recycleView 的Adapter
-        //adapter=new MyAdapter(msgList);
-        //recyclerView.setAdapter(adapter);
         help = (ImageButton) findViewById(R.id.main_btn_7);
         help.setOnClickListener(new View.OnClickListener() {
                                     public void onClick(View view) {

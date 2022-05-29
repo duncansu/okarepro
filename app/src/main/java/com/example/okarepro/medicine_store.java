@@ -19,6 +19,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
@@ -27,6 +28,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -53,11 +55,17 @@ public class medicine_store extends AppCompatActivity {
     private ListView listView;
     private static final int REQUEST_FINE_LOCATION_PERMISSION = 102;
     ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
+    MyAdapter myAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medicinestore);
+
+
+
+
+
 
         ImageButton seekstore = (ImageButton) findViewById(R.id.seekstore);
         seekstore.setOnClickListener(new View.OnClickListener() {
@@ -113,7 +121,7 @@ public class medicine_store extends AppCompatActivity {
                 String aa = updateShow(lc);
                 //設定間隔兩秒獲得一次GPS定位資訊
 
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 0, new LocationListener() {
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 3000, 0, new LocationListener() {
                     @Override
                     public void onLocationChanged(Location location) {
                         // 當GPS定位資訊發生改變時，更新定位
@@ -197,11 +205,13 @@ public class medicine_store extends AppCompatActivity {
                 ProgressDialog dialog = ProgressDialog.show(medicine_store.this, "讀取中"
                         , "請稍候", true);
 //
-                new Thread(() -> {
 
+
+                new Thread(() -> {
                     Looper.prepare();
-                    double a0=Double.parseDouble(startLocation().split(",")[1]);
-                    double a1=Double.parseDouble(startLocation().split(",")[3]);
+
+                    double a0 = Double.parseDouble(startLocation().split(",")[1]);
+                    double a1 = Double.parseDouble(startLocation().split(",")[3]);
                     BufferedReader br = new BufferedReader(inputStream);
                     String aa = "";
                     while (true) {
@@ -219,13 +229,14 @@ public class medicine_store extends AppCompatActivity {
                         String data3 = item[3];
                         String data4 = item[4];
                         String data5 = item[5];
-                        if (gps2m(a0,a1, Double.parseDouble(data4), Double.parseDouble(data5)) < 1850) {
-                            System.out.print(data1 + "\t" + data4 + "\t" + data5 + "\n");
+                        if (gps2m(a0, a1, Double.parseDouble(data4), Double.parseDouble(data5)) < 2500) {
+                            System.out.print(data1 + "\t" + data4 + "\t" + data5 + "\n"+gps2m(a0, a1, Double.parseDouble(data4), Double.parseDouble(data5)));
                             String[] from = {"store", "address", "phone", "yes/no"};
                             HashMap<String, String> hashMap = new HashMap<>();
                             hashMap.put(from[0], data1);
                             hashMap.put(from[1], data2);
                             hashMap.put(from[2], data3);
+                            hashMap.put(from[3], data0);
                             arrayList.add(hashMap);
 
                         }
@@ -238,13 +249,15 @@ public class medicine_store extends AppCompatActivity {
 
                     runOnUiThread(() -> {
                         dialog.dismiss();
-                        RecyclerView recyclerView;
-                        MyAdapter myAdapter;
-                        recyclerView = findViewById(R.id.rv);
-                        recyclerView.setLayoutManager(new LinearLayoutManager(medicine_store.this));
-                        recyclerView.addItemDecoration(new DividerItemDecoration(medicine_store.this, DividerItemDecoration.VERTICAL));
-                        myAdapter = new MyAdapter();
-                        recyclerView.setAdapter(myAdapter);
+                            RecyclerView recyclerView;
+                            recyclerView = findViewById(R.id.rv);
+                            recyclerView.setLayoutManager(new LinearLayoutManager(medicine_store.this));
+                            recyclerView.addItemDecoration(new DividerItemDecoration(medicine_store.this, DividerItemDecoration.VERTICAL));
+                            myAdapter = new MyAdapter();
+                            recyclerView.setAdapter(myAdapter);
+
+
+
 
                     });
                     Looper.loop();
@@ -272,6 +285,7 @@ public class medicine_store extends AppCompatActivity {
         public class ViewHolder extends RecyclerView.ViewHolder {
 
             TextView store1, address1, phone1, yes1;
+            Button callphone;
 
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
@@ -279,6 +293,7 @@ public class medicine_store extends AppCompatActivity {
                 address1 = itemView.findViewById(R.id.address1);
                 phone1 = itemView.findViewById(R.id.phone1);
                 yes1 = itemView.findViewById(R.id.yes1);
+                callphone = itemView.findViewById(R.id.callphone);
             }
         }
 
@@ -293,7 +308,26 @@ public class medicine_store extends AppCompatActivity {
             holder.store1.setText(arrayList.get(position).get("store"));
             holder.address1.setText("地址：" + arrayList.get(position).get("address"));
             holder.phone1.setText("電話：" + arrayList.get(position).get("phone"));
-            holder.yes1.setText("健保：" + arrayList.get(position).get("yes/no"));
+            holder.yes1.setText("健保特約藥局：" + arrayList.get(position).get("yes/no"));
+            String bb=arrayList.get(position).get("phone");
+            holder.callphone.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent phoneIntent = new Intent(Intent.ACTION_DIAL);
+                    String aa = "tel:" +bb;
+                    phoneIntent.setData(Uri.parse(aa));
+                    try {
+                        startActivity(phoneIntent);
+                        finish();
+                        System.out.print("Finished making a call...");
+                    } catch (android.content.ActivityNotFoundException ex) {
+                        Toast.makeText(medicine_store.this,
+                                "Call faild, please try again later.", Toast.LENGTH_SHORT).show();
+                    }
+
+
+                }
+            });
+
 
 
         }
