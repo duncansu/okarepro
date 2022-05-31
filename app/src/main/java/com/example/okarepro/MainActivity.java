@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -39,25 +40,38 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
-    private List<Msg> msgList = new ArrayList<>();
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
     private ImageButton cloud, help, healthybutton, dial1, dial2, medicinestore,settingbutton;
-    private MyAdapter adapter;
+
     private AlertDialog alert;
     private Timer timerl;
+    private TextView contactperson1,contactperson2;
     FirebaseDatabase rootNode;
     DatabaseReference reference, r1;
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
     private RequestQueue queue;
+    private SharedPreferences sp;
+    private SharedPreferences.Editor editor;
 
     //測試用資料集
-    private LinkedList<HashMap<String, String>> data;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        sp=getSharedPreferences("contactperson",MODE_PRIVATE);
+        Intent intent = getIntent();
+        contactperson1=(TextView)findViewById(R.id.contactperson1);
+        contactperson2=(TextView)findViewById(R.id.contactperson2);
+        contactperson1.setText(sp.getString("TextPersonName1",""));
+        contactperson2.setText(sp.getString("TextPersonName2",""));
+
+
+
         settingbutton=(ImageButton)findViewById(R.id.settingbutton);
         settingbutton.setOnClickListener(new View.OnClickListener() {
                                              public void onClick(View view) {
@@ -141,13 +155,14 @@ public class MainActivity extends AppCompatActivity {
         );
 
 
-        String phoneNumber = "0937889479";
         dial1 = (ImageButton) findViewById(R.id.contact1);
         dial1.setOnClickListener(new View.OnClickListener() {
-                                     public void onClick(View view) {
 
+
+                                     public void onClick(View view) {
+                                         String phoneNumber = sp.getString("TextPersonPhone1","");;
                                          Intent phoneIntent = new Intent(Intent.ACTION_DIAL);
-                                         String aa = "tel:" + "0937889479";
+                                         String aa = "tel:" + phoneNumber;
                                          phoneIntent.setData(Uri.parse(aa));
                                          try {
                                              startActivity(phoneIntent);
@@ -161,12 +176,14 @@ public class MainActivity extends AppCompatActivity {
                                      }
                                  }
         );
-        String phoneNumber1 = "0933854611";
+
         dial2 = (ImageButton) findViewById(R.id.contact2);
         dial2.setOnClickListener(new View.OnClickListener() {
                                      public void onClick(View view) {
+
+                                         String phoneNumber1 = sp.getString("TextPersonPhone2","");;
                                          Intent phoneIntent = new Intent(Intent.ACTION_DIAL);
-                                         String aa = "tel:" + "0933854611";
+                                         String aa = "tel:" + phoneNumber1;
                                          phoneIntent.setData(Uri.parse(aa));
                                          try {
                                              startActivity(phoneIntent);
@@ -184,96 +201,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-    //做Adapter 的部分
-    public class Msg {
-        public static final int TYPE_RECEIVED = 0;
-        public static final int TYPE_SENT = 1;
-        private String content;
-        private int type;
-
-        public Msg(String content, int type) {
-            this.content = content;
-            this.type = type;
-        }
-
-        public String getContent() {
-            return content;
-        }
-
-        public int getType() {
-            return type;
-        }
-    }
-
-    //自訂義myadapter
-    private class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-        private List<Msg> mMsgList;
-
-        //屬性中間的間接
-        class MyViewHolder extends RecyclerView.ViewHolder {
-            // public View mTextView;
-            //public TextView title,date;
-            LinearLayout leftlayout;
-            LinearLayout rightlayout;
-            TextView leftMsg;
-            TextView rightMsg;
-            TextView nameTxt, messageTxt, msgtext;
-
-            public MyViewHolder(View v) {
-                //mTextView=v;
-                super(v);
-                leftlayout = v.findViewById(R.id.left_layout);
-                rightlayout = v.findViewById(R.id.right_layout);
-                leftMsg = v.findViewById(R.id.receivedTxt);
-                rightMsg = v.findViewById(R.id.sentTxt);
-            }
-        }
-
-        public MyAdapter(List<Msg> msgList) {
-            mMsgList = msgList;
-        }
-
-        @NonNull
-        @Override
-        //產生holder 和view 對接的介面
-        public MyAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            //把view take 出來後跟viewholder 對接
-            View itemview = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
-            MyViewHolder aa = new MyViewHolder(itemview);
-            return aa;
-        }
-
-        @Override
-        //處理資料處理的細節
-        public void onBindViewHolder(@NonNull MyAdapter.MyViewHolder holder, int position) {
-            //holder.title.setText(data.get(position).get("title"));
-            //holder.date.setText(data.get(position).get("date"));
-            Msg msg = mMsgList.get(position);
-            if (msg.getType() == Msg.TYPE_RECEIVED) {
-//如果是收到的訊息，則顯示左邊的訊息佈局，將右邊的訊息佈局隱藏
-                holder.leftlayout.setVisibility(View.VISIBLE);
-                holder.rightlayout.setVisibility(View.GONE);
-                holder.leftMsg.setText(msg.getContent());
-            } else if (msg.getType() == Msg.TYPE_SENT) {
-//如果是發出的訊息，則顯示右邊的訊息佈局，將左邊的訊息佈局隱藏
-                holder.rightlayout.setVisibility(View.VISIBLE);
-                holder.leftlayout.setVisibility(View.GONE);
-                holder.rightMsg.setText(msg.getContent());
-            }
-        }
-
-        @Override
-        //總共有幾筆資料
-        public int getItemCount() {
-            return mMsgList.size();
-        }
-    }
-
-
-    public void medicinemethod(View view) {
-    }
-
-    public void cloudmethod(View view) {
-    }
 }

@@ -70,6 +70,7 @@
                         android:background="@drawable/contactperson" />
 
                     <TextView
+                        android:id="@+id/contactperson1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
@@ -95,6 +96,7 @@
                     android:background="@drawable/contactperson"
                     />
                 <TextView
+                    android:id="@+id/contactperson2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="10dp"
