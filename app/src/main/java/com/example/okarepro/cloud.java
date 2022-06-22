@@ -44,20 +44,20 @@ public class cloud extends AppCompatActivity {
         check2=(TextView)findViewById(R.id.check2);
         queue= Volley.newRequestQueue(this);
 
-        back=(ImageButton) findViewById(R.id.back);
-        back.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view) {
-
-                Intent intent = new Intent();
-                intent.setClass(cloud.this,ifinite_cloud.class);
-                stopService(intent);
-                Intent intent1 = new Intent();
-                intent1.setClass(cloud.this,MainActivity.class);
-                startActivity(intent1);
-                overridePendingTransition(R.anim.slide_left,R.anim.slide_left);
-
-            }
-        });
+//        back=(ImageButton) findViewById(R.id.back);
+//        back.setOnClickListener(new View.OnClickListener(){
+//            public void onClick(View view) {
+//
+//                Intent intent = new Intent();
+//                intent.setClass(cloud.this,ifinite_cloud.class);
+//                stopService(intent);
+//                Intent intent1 = new Intent();
+//                intent1.setClass(cloud.this,MainActivity.class);
+//                startActivity(intent1);
+//                overridePendingTransition(R.anim.slide_left,R.anim.slide_left);
+//
+//            }
+//        });
 
 
 
