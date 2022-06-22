@@ -130,17 +130,17 @@ public class MainActivity extends AppCompatActivity {
                                              }
                                          }
         );
-        cloud = (ImageButton) findViewById(R.id.main_btn_10);
-        cloud.setOnClickListener(new View.OnClickListener() {
-                                     public void onClick(View view) {
-
-                                         Intent intent = new Intent();
-                                         intent.setClass(MainActivity.this, cloud.class);
-                                         startActivity(intent);
-
-                                     }
-                                 }
-        );
+//        cloud = (ImageButton) findViewById(R.id.main_btn_10);
+//        cloud.setOnClickListener(new View.OnClickListener() {
+//                                     public void onClick(View view) {
+//
+//                                         Intent intent = new Intent();
+//                                         intent.setClass(MainActivity.this, cloud.class);
+//                                         startActivity(intent);
+//
+//                                     }
+//                                 }
+//        );
 
 
         medicinestore = (ImageButton) findViewById(R.id.main_btn_9);

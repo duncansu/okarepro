@@ -47,7 +47,7 @@
         android:text="降雨機率:"
         android:textColor="@color/black"
         android:textSize="28dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -59,7 +59,7 @@
         android:text="家裡溫度:"
         android:textColor="@color/black"
         android:textSize="28dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
@@ -71,7 +71,7 @@
         android:text="家裡濕度:"
         android:textColor="@color/black"
         android:textSize="28dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <TextView
@@ -79,12 +79,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:layout_marginEnd="10dp"
         android:text="40%"
         android:textColor="@color/black"
         android:textSize="28dp"
-        app:layout_constraintEnd_toStartOf="@+id/textView5"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndtOf="@+id/textView5"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="121dp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView9"
@@ -95,7 +96,7 @@
         android:text="26c"
         android:textColor="@color/black"
         android:textSize="28dp"
-        app:layout_constraintEnd_toStartOf="@id/textView6"
+        app:layout_constraintStart_toEndOf="@id/textView6"
         app:layout_constraintTop_toTopOf="@+id/textView8" />
 
     <TextView
@@ -107,43 +108,45 @@
         android:text="35%"
         android:textColor="@color/black"
         android:textSize="28dp"
-        app:layout_constraintEnd_toStartOf="@id/textView7"
+        app:layout_constraintStart_toEndOf="@id/textView7"
         app:layout_constraintTop_toTopOf="@+id/textView9" />
+
+
+    <!--    從這裡包grid layout-->
 
     <ImageView
         android:id="@+id/iconcloud"
         android:layout_width="140dp"
         android:layout_height="140dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="48dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="56dp"
         android:src="@drawable/ic_baseline_cloud"
-        app:layout_constraintEnd_toStartOf="@id/textView8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toSEndOf="@id/textView8"
         app:layout_constraintTop_toTopOf="parent" />
-
-
-    <!--    從這裡包grid layout-->
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="80dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="20dp"
         android:text="35%"
         android:textColor="@color/black"
-        android:textSize="32dp"
-        app:layout_constraintEnd_toStartOf="@id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/iconcloud"
+        android:textSize="36dp"
+        app:layout_constraintStart_toEndOf="@id/textView10"
 
-        />
+        app:layout_constraintTop_toBottomOf="@+id/iconcloud" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/info_image_button1"
+        android:id="@+id/contact1"
         android:layout_width="200dp"
         android:layout_height="150dp"
         android:layout_marginTop="10dp"
+
         android:paddingHorizontal="50dp"
         android:background="@drawable/green"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintEnd_toLeftOf="info_image_button4"
         app:layout_constraintTop_toBottomOf="@id/textView10">
 
@@ -160,6 +163,7 @@
             app:layout_constraintVertical_bias="0.095" />
 
         <TextView
+            android:id="@+id/contactperson1"
             android:layout_width="110dp"
             android:layout_height="27dp"
             android:layout_marginStart="36dp"
@@ -177,14 +181,15 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/info_image_button2"
+        android:id="@+id/main_btn_8"
         android:layout_width="200dp"
         android:layout_height="150dp"
         android:layout_marginTop="10dp"
+
         android:background="@color/purple_200"
         android:paddingHorizontal="50dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/info_image_button1">
+        app:layout_constraintTop_toBottomOf="@id/contact1">
 
         <ImageView
             android:id="@+id/healthy"
@@ -215,19 +220,19 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/info_image_button4"
+        android:id="@+id/contact2"
         android:layout_width="200dp"
         android:layout_height="150dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="210dp"
+
+        android:layout_marginStart="10dp"
         android:background="@drawable/orange"
         android:paddingHorizontal="50dp"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toLeftOf="parent"
-        app:layout_constraintStart_toEndtOf="@+id/info_image_button1"
+        app:layout_constraintStart_toEndtOf="@+id/contact1"
         app:layout_constraintTop_toBottomOf="@id/textView11">
 
         <ImageView
@@ -243,6 +248,7 @@
             app:layout_constraintVertical_bias="0.095" />
 
         <TextView
+            android:id="@+id/contactperson2"
             android:layout_width="0dp"
             android:layout_height="28dp"
             android:layout_marginStart="24dp"
@@ -259,17 +265,19 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/info_image_button5"
+        android:id="@+id/main_btn_9"
         android:layout_width="200dp"
         android:layout_height="150dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="210dp"
+
+
         android:background="@drawable/blue"
 
         android:paddingHorizontal="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndtOf="@+id/info_image_button2"
-        app:layout_constraintTop_toBottomOf="@id/info_image_button4">
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintEnd_toLeftOf="info_image_button4"
+        app:layout_constraintTop_toBottomOf="@id/contact1">
 
         <ImageView
             android:id="@+id/hi"
@@ -301,29 +309,29 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/info_image_button3"
+        android:id="@+id/main_btn_7"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/red"
         android:paddingHorizontal="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/info_image_button2">
+        app:layout_constraintTop_toBottomOf="@id/main_btn_8">
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="80dp"
-            android:layout_marginStart="100dp"
             android:gravity="center"
             android:text="SOS"
-            android:textSize="50dp"
             android:textColor="@color/white"
-            app:layout_constraintHorizontal_bias="1.0"
+            android:textSize="50dp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-           />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
