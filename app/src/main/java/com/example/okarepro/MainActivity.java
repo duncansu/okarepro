@@ -1,9 +1,7 @@
 package com.example.okarepro;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.BroadcastReceiver;
@@ -15,38 +13,35 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
 import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Timer;
-import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
-    private ImageButton cloud, help, healthybutton, dial1, dial2, medicinestore,settingbutton;
+    private ImageButton cloud, settingbutton;
+    private TextView test1, test2, test3, test4;
+    private TextView help;
+    private myReceiver myreceiver1;
+    ImageView healthybutton,medicinestore,dial1,dial2;
 
     private AlertDialog alert;
     private Timer timerl;
-    private TextView contactperson1,contactperson2;
+    private TextView contactperson1, contactperson2;
     FirebaseDatabase rootNode;
     DatabaseReference reference, r1;
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
@@ -57,22 +52,27 @@ public class MainActivity extends AppCompatActivity {
     //測試用資料集
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        cloud 宣告
+        test1 = (TextView) findViewById(R.id.textView9);
+        test2 = (TextView) findViewById(R.id.textView10);
+        test3 = (TextView) findViewById(R.id.textView11);
+        test4 = (TextView) findViewById(R.id.textView8);
+        queue = Volley.newRequestQueue(this);
 
-        sp=getSharedPreferences("contactperson",MODE_PRIVATE);
+
+        sp = getSharedPreferences("contactperson", MODE_PRIVATE);
         Intent intent = getIntent();
-        contactperson1=(TextView)findViewById(R.id.contactperson1);
-        contactperson2=(TextView)findViewById(R.id.contactperson2);
-        contactperson1.setText(sp.getString("TextPersonName1",""));
-        contactperson2.setText(sp.getString("TextPersonName2",""));
+        contactperson1 = (TextView) findViewById(R.id.textView12);
+        contactperson2 = (TextView) findViewById(R.id.textView13);
+        contactperson1.setText(sp.getString("TextPersonName1", ""));
+        contactperson2.setText(sp.getString("TextPersonName2", ""));
 
 
-
-        settingbutton=(ImageButton)findViewById(R.id.settingbutton);
+        settingbutton = (ImageButton) findViewById(R.id.setting);
         settingbutton.setOnClickListener(new View.OnClickListener() {
                                              public void onClick(View view) {
                                                  Intent intent1 = new Intent();
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         );
 
 
-        help = (ImageButton) findViewById(R.id.main_btn_7);
+        help =  (TextView) findViewById(R.id.textView14);
         help.setOnClickListener(new View.OnClickListener() {
                                     public void onClick(View view) {
                                         Toast toast = Toast.makeText(MainActivity.this, "若要使用SOS請長按「SOS」方格", Toast.LENGTH_SHORT);
@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-        healthybutton = (ImageButton) findViewById(R.id.main_btn_8);
+        healthybutton = (ImageView) findViewById(R.id.imageView4);
         healthybutton.setOnClickListener(new View.OnClickListener() {
                                              public void onClick(View view) {
                                                  Intent intent1 = new Intent();
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
 //        );
 
 
-        medicinestore = (ImageButton) findViewById(R.id.main_btn_9);
+        medicinestore = (ImageView) findViewById(R.id.imageView3);
         medicinestore.setOnClickListener(new View.OnClickListener() {
                                              public void onClick(View view) {
                                                  Intent intent = new Intent();
@@ -155,12 +155,13 @@ public class MainActivity extends AppCompatActivity {
         );
 
 
-        dial1 = (ImageButton) findViewById(R.id.contact1);
+        dial1 = (ImageView) findViewById(R.id.newphone1);
         dial1.setOnClickListener(new View.OnClickListener() {
 
 
                                      public void onClick(View view) {
-                                         String phoneNumber = sp.getString("TextPersonPhone1","");;
+                                         String phoneNumber = sp.getString("TextPersonPhone1", "");
+                                         ;
                                          Intent phoneIntent = new Intent(Intent.ACTION_DIAL);
                                          String aa = "tel:" + phoneNumber;
                                          phoneIntent.setData(Uri.parse(aa));
@@ -177,11 +178,12 @@ public class MainActivity extends AppCompatActivity {
                                  }
         );
 
-        dial2 = (ImageButton) findViewById(R.id.contact2);
+        dial2 = (ImageView) findViewById(R.id.newphone2);
         dial2.setOnClickListener(new View.OnClickListener() {
                                      public void onClick(View view) {
 
-                                         String phoneNumber1 = sp.getString("TextPersonPhone2","");;
+                                         String phoneNumber1 = sp.getString("TextPersonPhone2", "");
+                                         ;
                                          Intent phoneIntent = new Intent(Intent.ACTION_DIAL);
                                          String aa = "tel:" + phoneNumber1;
                                          phoneIntent.setData(Uri.parse(aa));
@@ -201,4 +203,34 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void onStart() {
+        super.onStart();
+        Intent intent = new Intent();
+        intent.setClass(MainActivity.this, ifinite_cloud.class);
+        startService(intent);
+        myreceiver1 = new myReceiver();
+        IntentFilter filter = new IntentFilter("fromService");
+        registerReceiver(myreceiver1, filter);
+
+    }
+
+    private class myReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            String result = intent.getStringExtra("result");
+            String result1 = intent.getStringExtra("result1");
+            String result2 = intent.getStringExtra("result2");
+            String result3 = intent.getStringExtra("result3");
+            test1.setText(result + "°C");
+            test2.setText(result1 + "%");
+            test4.setText(result2 + "%");
+            test3.setText(result3 + "°C");
+
+
+        }
+    }
+
 }
+

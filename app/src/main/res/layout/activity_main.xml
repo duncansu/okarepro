@@ -6,335 +6,346 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".MainActivity">
-        <RelativeLayout
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        tools:ignore="MissingConstraints">
+
+        <ImageButton
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/snackbar" />
+
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="5"
-            tools:ignore="MissingConstraints">
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="1dp"
+            android:src="@drawable/okrebar" />
 
-            <ImageButton
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_alignParentLeft="true"
-                android:background="@drawable/snackbar"
-                android:layout_marginTop="10dp"
-                />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="1dp"
-                android:src="@drawable/okrebar" />
-
-            <ImageButton
-                android:id="@+id/settingbutton"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:background="@drawable/oldersetting" />
-        </RelativeLayout>
-
-
+        <ImageButton
+            android:id="@+id/setting"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/oldersetting" />
+    </RelativeLayout>
 
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
         android:text="降雨機率:"
         android:textColor="@color/black"
         android:textSize="28dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginTop="24dp"
         android:text="家裡溫度:"
         android:textColor="@color/black"
         android:textSize="28dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginTop="24dp"
         android:text="家裡濕度:"
         android:textColor="@color/black"
         android:textSize="28dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginStart="10dp"
         android:text="40%"
         android:textColor="@color/black"
         android:textSize="28dp"
-        app:layout_constraintStart_toEndtOf="@+id/textView5"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="121dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView5"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toTopOf="@+id/textView5"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="12dp"
-        android:text="26c"
+        android:layout_marginStart="10dp"
+        android:text="26°C"
         android:textColor="@color/black"
         android:textSize="28dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView6"
         app:layout_constraintStart_toEndOf="@id/textView6"
-        app:layout_constraintTop_toTopOf="@+id/textView8" />
+        app:layout_constraintTop_toTopOf="@+id/textView6" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginStart="10dp"
         android:text="35%"
         android:textColor="@color/black"
         android:textSize="28dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView7"
         app:layout_constraintStart_toEndOf="@id/textView7"
-        app:layout_constraintTop_toTopOf="@+id/textView9" />
+        app:layout_constraintTop_toTopOf="@+id/textView7" />
 
 
     <!--    從這裡包grid layout-->
 
     <ImageView
         android:id="@+id/iconcloud"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="56dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
         android:src="@drawable/ic_baseline_cloud"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toSEndOf="@id/textView8"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/textView8"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
         android:layout_marginTop="20dp"
         android:text="35%"
         android:textColor="@color/black"
         android:textSize="36dp"
-        app:layout_constraintStart_toEndOf="@id/textView10"
 
+        app:layout_constraintBottom_toBottomOf="@+id/textView10"
+        app:layout_constraintEnd_toEndOf="@+id/iconcloud"
+        app:layout_constraintStart_toStartOf="@+id/iconcloud"
         app:layout_constraintTop_toBottomOf="@+id/iconcloud" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/contact1"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="10dp"
 
-        android:paddingHorizontal="50dp"
-        android:background="@drawable/green"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintEnd_toLeftOf="info_image_button4"
-        app:layout_constraintTop_toBottomOf="@id/textView10">
-
-        <ImageView
-            android:id="@+id/food_img"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="5dp"
-            android:src="@drawable/phone_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.095" />
-
-        <TextView
-            android:id="@+id/contactperson1"
-            android:layout_width="110dp"
-            android:layout_height="27dp"
-            android:layout_marginStart="36dp"
-            android:gravity="center"
-            android:text="飲食搭配"
-            android:textSize="24dp"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintLeft_toRightOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/food_img" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/main_btn_8"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="10dp"
-
-        android:background="@color/purple_200"
-        android:paddingHorizontal="50dp"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/contact1">
+        app:layout_constraintGuide_percent="0.37" />
 
-        <ImageView
-            android:id="@+id/healthy"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="5dp"
-            android:src="@drawable/receipt_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.1" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.500" />
 
-        <TextView
-            android:layout_width="104dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="4dp"
-            android:gravity="center"
-            android:text="衛服資訊"
-            android:textColor="@color/white"
-            android:textSize="24dp"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintLeft_toRightOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/healthy" />
+    <View
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="2dp"
+        android:background="#FFC107"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.59" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.79" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/contact2"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="10dp"
+    <ImageView
+        android:id="@+id/newphone1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        app:srcCompat="@drawable/phone_24" />
 
-        android:layout_marginStart="10dp"
-        android:background="@drawable/orange"
-        android:paddingHorizontal="50dp"
-        android:textColor="@color/white"
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="連絡人1"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newphone1" />
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="2dp"
+        android:background="#8BC34A"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toLeftOf="parent"
-        app:layout_constraintStart_toEndtOf="@+id/contact1"
-        app:layout_constraintTop_toBottomOf="@id/textView11">
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
 
-        <ImageView
-            android:id="@+id/bye1"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="5dp"
-            android:src="@drawable/phone_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.095" />
+    <ImageView
+        android:id="@+id/newphone2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/newphone1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        app:srcCompat="@drawable/phone_24" />
 
-        <TextView
-            android:id="@+id/contactperson2"
-            android:layout_width="0dp"
-            android:layout_height="28dp"
-            android:layout_marginStart="24dp"
-            android:gravity="center"
-            android:text="飲食搭配"
-            android:textSize="20dp"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintLeft_toRightOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/bye1" />
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="連絡人2"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/newphone2" />
 
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/main_btn_9"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="10dp"
-
-
-        android:background="@drawable/blue"
-
-        android:paddingHorizontal="50dp"
-
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintEnd_toLeftOf="info_image_button4"
-        app:layout_constraintTop_toBottomOf="@id/contact1">
-
-        <ImageView
-            android:id="@+id/hi"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="4dp"
-            android:src="@drawable/store_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.095" />
-
-        <TextView
-            android:layout_width="104dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="4dp"
-            android:gravity="center"
-            android:text="藥局門市"
-            android:textColor="@color/white"
-            android:textSize="24dp"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintLeft_toRightOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/hi" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/main_btn_7"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/red"
-        android:paddingHorizontal="50dp"
+    <View
+        android:id="@+id/view4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="4dp"
+        android:background="#F44336"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/view3"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="SOS"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="96sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view4"
+        app:layout_constraintEnd_toEndOf="@+id/view4"
+        app:layout_constraintStart_toStartOf="@+id/view4"
+        app:layout_constraintTop_toTopOf="@+id/view4" />
+
+    <View
+        android:id="@+id/view5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="2dp"
+        android:background="#2196F3"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view5"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        app:srcCompat="@drawable/store_24" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="藥局查詢"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/view5"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <View
+        android:id="@+id/view6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="2dp"
+        android:background="#F0BBFF"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/main_btn_8">
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toEndOf="@+id/view6"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/guideline3"
+        app:srcCompat="@drawable/receipt_24" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:gravity="center"
-            android:text="SOS"
-            android:textColor="@color/white"
-            android:textSize="50dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:outlineAmbientShadowColor="#171616"
+        android:text="衛服資訊"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
