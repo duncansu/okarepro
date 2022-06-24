@@ -10,8 +10,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Icon;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageButton;
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView test1, test2, test3, test4;
     private TextView help;
     private myReceiver myreceiver1;
-    ImageView healthybutton,medicinestore,dial1,dial2;
+    ImageView healthybutton, medicinestore, dial1, dial2, cloud1;
 
     private AlertDialog alert;
     private Timer timerl;
@@ -62,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         test3 = (TextView) findViewById(R.id.textView11);
         test4 = (TextView) findViewById(R.id.textView8);
         queue = Volley.newRequestQueue(this);
+        cloud1 = (ImageView) findViewById(R.id.iconcloud);
 
 
         sp = getSharedPreferences("contactperson", MODE_PRIVATE);
@@ -84,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         );
 
 
-        help =  (TextView) findViewById(R.id.textView14);
+        help = (TextView) findViewById(R.id.textView14);
         help.setOnClickListener(new View.OnClickListener() {
                                     public void onClick(View view) {
                                         Toast toast = Toast.makeText(MainActivity.this, "若要使用SOS請長按「SOS」方格", Toast.LENGTH_SHORT);
@@ -216,6 +219,7 @@ public class MainActivity extends AppCompatActivity {
 
     private class myReceiver extends BroadcastReceiver {
 
+
         @Override
         public void onReceive(Context context, Intent intent) {
 
@@ -228,9 +232,17 @@ public class MainActivity extends AppCompatActivity {
             test4.setText(result2 + "%");
             test3.setText(result3 + "°C");
 
+            if (!TextUtils.isEmpty(result2) && TextUtils.isDigitsOnly(result2)) {
+                int aa = Integer.parseInt(result2);
+                if (aa < 20) {
+                    cloud.setImageIcon(Icon.createWithContentUri("@drawable/sun"));
+                }
+
+
+            }
 
         }
-    }
 
+    }
 }
 

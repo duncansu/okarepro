@@ -14,18 +14,12 @@
         android:layout_weight="5"
         tools:ignore="MissingConstraints">
 
-        <ImageButton
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/snackbar" />
-
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginTop="1dp"
+            android:background="@color/white"
             android:src="@drawable/okrebar" />
 
         <ImageButton
@@ -113,10 +107,9 @@
 
     <ImageView
         android:id="@+id/iconcloud"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
         android:src="@drawable/ic_baseline_cloud"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/textView8"

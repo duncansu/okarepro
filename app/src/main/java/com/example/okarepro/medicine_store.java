@@ -61,13 +61,7 @@ public class medicine_store extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medicinestore);
-
-
-
-
-
-
-        ImageButton seekstore = (ImageButton) findViewById(R.id.seekstore);
+       TextView seekstore = (TextView) findViewById(R.id.seekstore);
         seekstore.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 InputStreamReader aa = null;
@@ -270,7 +264,7 @@ public class medicine_store extends AppCompatActivity {
         });
 
 
-        ImageButton back2 = (ImageButton) findViewById(R.id.back2);
+        TextView back2 = (TextView) findViewById(R.id.back2);
         back2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent();
