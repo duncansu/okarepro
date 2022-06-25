@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Icon;
 import android.net.Uri;
 import android.os.Bundle;
@@ -28,7 +29,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Timer;
 
 public class MainActivity extends AppCompatActivity {
@@ -40,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView help;
     private myReceiver myreceiver1;
     ImageView healthybutton, medicinestore, dial1, dial2, cloud1;
+    List<Drawable> drawableList = new ArrayList<Drawable>();//存放圖片
 
     private AlertDialog alert;
     private Timer timerl;
@@ -64,7 +68,8 @@ public class MainActivity extends AppCompatActivity {
         test3 = (TextView) findViewById(R.id.textView11);
         test4 = (TextView) findViewById(R.id.textView8);
         queue = Volley.newRequestQueue(this);
-        cloud1 = (ImageView) findViewById(R.id.iconcloud);
+        drawableList.add(getResources().getDrawable(R.drawable.sun));//圖片01
+        drawableList.add(getResources().getDrawable(R.drawable.ic_baseline_cloud));//圖片02
 
 
         sp = getSharedPreferences("contactperson", MODE_PRIVATE);
@@ -234,8 +239,20 @@ public class MainActivity extends AppCompatActivity {
 
             if (!TextUtils.isEmpty(result2) && TextUtils.isDigitsOnly(result2)) {
                 int aa = Integer.parseInt(result2);
-                if (aa < 20) {
-                    cloud.setImageIcon(Icon.createWithContentUri("@drawable/sun"));
+                if (aa <20) {
+                    cloud1 = (ImageView) findViewById(R.id.iconcloud);
+                    cloud1.setImageResource(R.drawable.sun);
+                }
+                else if(aa<=40||aa>=20){
+                    cloud1 = (ImageView) findViewById(R.id.iconcloud);
+                    cloud1.setImageResource(R.drawable.ic_baseline_cloud);
+                }
+                else{
+
+                    cloud1 = (ImageView) findViewById(R.id.iconcloud);
+                    cloud1.setImageResource(R.drawable.cloud_bad);
+
+
                 }
 
 
