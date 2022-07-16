@@ -106,9 +106,9 @@ public class MainActivity extends AppCompatActivity {
         help.setOnLongClickListener(new View.OnLongClickListener() {
             public boolean onLongClick(View view) {
                 rootNode = FirebaseDatabase.getInstance();
-                reference = rootNode.getReference("WARNING_MESSAGE/older_side/sos");
+                reference = rootNode.getReference("RQJO-TOAZ-OKLT-VJTM/older_side/sos");
                 reference.setValue(true);
-                r1 = rootNode.getReference("WARNING_MESSAGE/older_side/datetime");
+                r1 = rootNode.getReference("RQJO-TOAZ-OKLT-VJTM/older_side/datetime");
                 Date date = new Date(System.currentTimeMillis());
                 r1.setValue(formatter.format(date));
                 AlertDialog.Builder alertDialog =
@@ -138,17 +138,7 @@ public class MainActivity extends AppCompatActivity {
                                              }
                                          }
         );
-//        cloud = (ImageButton) findViewById(R.id.main_btn_10);
-//        cloud.setOnClickListener(new View.OnClickListener() {
-//                                     public void onClick(View view) {
-//
-//                                         Intent intent = new Intent();
-//                                         intent.setClass(MainActivity.this, cloud.class);
-//                                         startActivity(intent);
-//
-//                                     }
-//                                 }
-//        );
+
 
 
         medicinestore = (ImageView) findViewById(R.id.imageView3);
@@ -243,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
                     cloud1 = (ImageView) findViewById(R.id.iconcloud);
                     cloud1.setImageResource(R.drawable.sun);
                 }
-                else if(aa<=40||aa>=20){
+                else if(aa<=40&&aa>=20){
                     cloud1 = (ImageView) findViewById(R.id.iconcloud);
                     cloud1.setImageResource(R.drawable.ic_baseline_cloud);
                 }
