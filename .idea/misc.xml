@@ -4,10 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/dunca/AndroidStudioProjects/okarepro/app/src/main/res/drawable/chat_shape.xml" value="0.1005" />
+        <entry key="..\:/Users/dunca/AndroidStudioProjects/okarepro/app/src/main/res/drawable/ic_baseline_phone_24.xml" value="0.127" />
         <entry key="..\:/Users/dunca/AndroidStudioProjects/okarepro/app/src/main/res/drawable/ic_food_80.xml" value="0.1005" />
         <entry key="..\:/Users/dunca/AndroidStudioProjects/okarepro/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1875" />
         <entry key="..\:/Users/dunca/AndroidStudioProjects/okarepro/app/src/main/res/drawable/ic_test_150.xml" value="0.1005" />
         <entry key="..\:/Users/dunca/AndroidStudioProjects/okarepro/app/src/main/res/drawable/info_card.xml" value="0.1005" />
+        <entry key="..\:/Users/dunca/AndroidStudioProjects/okarepro/app/src/main/res/drawable/phone_24.xml" value="0.127" />
+        <entry key="..\:/Users/dunca/AndroidStudioProjects/okarepro/app/src/main/res/drawable/receipt_24.xml" value="0.127" />
         <entry key="..\:/Users/dunca/AndroidStudioProjects/okarepro/app/src/main/res/drawable/switch_false_thumb.xml" value="0.1" />
         <entry key="..\:/Users/dunca/AndroidStudioProjects/okarepro/app/src/main/res/drawable/switch_false_track.xml" value="0.1" />
         <entry key="..\:/Users/dunca/AndroidStudioProjects/okarepro/app/src/main/res/drawable/switch_thumb.xml" value="0.1" />
