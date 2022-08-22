@@ -15,6 +15,7 @@ import android.graphics.drawable.Icon;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageButton;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView test1, test2, test3, test4;
     private TextView help;
     private myReceiver myreceiver1;
+    LogoutButton logoutButton;
     ImageView healthybutton, medicinestore, dial1, dial2, cloud1;
     List<Drawable> drawableList = new ArrayList<Drawable>();//存放圖片
 
@@ -52,16 +54,16 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference reference, r1;
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
     private RequestQueue queue;
-    private SharedPreferences sp;
+    private SharedPreferences sp,sp1;
     private SharedPreferences.Editor editor;
+    String key;
 
     //測試用資料集
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        logoutButton = new LogoutButton(findViewById(R.id.logout), this);
 //        cloud 宣告
         test1 = (TextView) findViewById(R.id.textView9);
         test2 = (TextView) findViewById(R.id.textView10);
@@ -70,16 +72,6 @@ public class MainActivity extends AppCompatActivity {
         queue = Volley.newRequestQueue(this);
         drawableList.add(getResources().getDrawable(R.drawable.sun));//圖片01
         drawableList.add(getResources().getDrawable(R.drawable.ic_baseline_cloud));//圖片02
-
-
-        sp = getSharedPreferences("contactperson", MODE_PRIVATE);
-        Intent intent = getIntent();
-        contactperson1 = (TextView) findViewById(R.id.textView12);
-        contactperson2 = (TextView) findViewById(R.id.textView13);
-        contactperson1.setText(sp.getString("TextPersonName1", ""));
-        contactperson2.setText(sp.getString("TextPersonName2", ""));
-
-
         settingbutton = (ImageButton) findViewById(R.id.setting);
         settingbutton.setOnClickListener(new View.OnClickListener() {
                                              public void onClick(View view) {
@@ -92,6 +84,15 @@ public class MainActivity extends AppCompatActivity {
         );
 
 
+        sp = getSharedPreferences("contactperson", MODE_PRIVATE);
+        sp1=getSharedPreferences("setting",MODE_PRIVATE);
+        Intent intent = getIntent();
+        contactperson1 = (TextView) findViewById(R.id.textView12);
+        contactperson2 = (TextView) findViewById(R.id.textView13);
+        contactperson1.setText(sp.getString("TextPersonName1", ""));
+        contactperson2.setText(sp.getString("TextPersonName2", ""));
+        key =sp1.getString("product_key",null);
+        Log.d("Tag", "here: "+key);
         help = (TextView) findViewById(R.id.textView14);
         help.setOnClickListener(new View.OnClickListener() {
                                     public void onClick(View view) {
@@ -105,10 +106,13 @@ public class MainActivity extends AppCompatActivity {
 //長按SOS觸發對話框
         help.setOnLongClickListener(new View.OnLongClickListener() {
             public boolean onLongClick(View view) {
+
                 rootNode = FirebaseDatabase.getInstance();
-                reference = rootNode.getReference("RQJO-TOAZ-OKLT-VJTM/older_side/sos");
+                reference = rootNode.getReference(key+"/older_side/sos");
+
+
                 reference.setValue(true);
-                r1 = rootNode.getReference("RQJO-TOAZ-OKLT-VJTM/older_side/datetime");
+                r1 = rootNode.getReference(key+"/older_side/datetime");
                 Date date = new Date(System.currentTimeMillis());
                 r1.setValue(formatter.format(date));
                 AlertDialog.Builder alertDialog =
@@ -201,7 +205,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void onStart() {
+
+        public void onStart() {
         super.onStart();
         Intent intent = new Intent();
         intent.setClass(MainActivity.this, ifinite_cloud.class);

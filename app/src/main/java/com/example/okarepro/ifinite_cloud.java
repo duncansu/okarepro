@@ -55,7 +55,7 @@ public class ifinite_cloud extends Service {
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            System.out.println(response);
+
                             parsejson(response);
                         }
                     },null
@@ -73,7 +73,7 @@ public class ifinite_cloud extends Service {
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            System.out.println(response);
+
                             parsejson1(response);
                         }
                     },null

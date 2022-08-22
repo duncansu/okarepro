@@ -223,7 +223,7 @@ public class medicine_store extends AppCompatActivity {
                         String data3 = item[3];
                         String data4 = item[4];
                         String data5 = item[5];
-                        if (gps2m(a0, a1, Double.parseDouble(data4), Double.parseDouble(data5)) < 2500) {
+                        if (gps2m(a0, a1, Double.parseDouble(data4), Double.parseDouble(data5)) < 5000) {
                             System.out.print(data1 + "\t" + data4 + "\t" + data5 + "\n"+gps2m(a0, a1, Double.parseDouble(data4), Double.parseDouble(data5)));
                             String[] from = {"store", "address", "phone", "yes/no"};
                             HashMap<String, String> hashMap = new HashMap<>();
@@ -249,10 +249,6 @@ public class medicine_store extends AppCompatActivity {
                             recyclerView.addItemDecoration(new DividerItemDecoration(medicine_store.this, DividerItemDecoration.VERTICAL));
                             myAdapter = new MyAdapter();
                             recyclerView.setAdapter(myAdapter);
-
-
-
-
                     });
                     Looper.loop();
 
